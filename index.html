@@ -6,14 +6,47 @@
     <script type=”text/javacript” src=”file.js”></script>
   </head>
   <body>
-   <button onclick="sayHello()">Hello, Popup!</button>
+   <button onclick="sayConsole()">Hello, Console!</button>
+   <button onclick="sayPopup()">Hello, Popup!</button>
+   <button onclick="setUserName()">Hello Stranger!</button>
    <script>
-   function sayHello() {
+function sayConsole() {
+console.log("Hello, World!")
+}
+
+function sayPopup () {
    alert("Hello World!");
-   }
+}
+
+function sayHello () {
+var p=document.getElementById("hello");
+p.innerHTML="Hello, World!"
+}
+
+function setUserName() {
+  var myName = prompt('Please enter your name.');
+  localStorage.setItem('name', myName);
+  myHeading.textContent = 'Hello, ' + myName;
+}
+
+if(!localStorage.getItem('name')) {
+  setUserName();
+}
+ else {
+  var storedName = localStorage.getItem('name');
+  myHeading.textContent = "Hello" + storedName;
+}
+
+  myButton.onclick = function() {
+  setUserName();
+}
+
+var myButton = document.querySelector('button');
+var myHeading = document.querySelector('h1');
+
    </script>
  </br>
- <button onclick=”sayHello();”>"Hello Browser!"</button>
+ <button onclick="sayHello();">Hello Browser!</button>
  <p id="hello"></p>
   </body>
 </html>
